@@ -4,15 +4,16 @@ Ce service angular permet de faciliter l'utilisation du plugin cordova [customCa
 
 ## Installation
 
-execute :
+Exécuter :
+
     bower install https://github.com/geneanet/customCameraAngular.git
 
-Or add in bower.json :
+Ou ajouter la ligne suivante dans votre bower.json :
+
     "customCameraAngular": "https://github.com/geneanet/customCameraAngular.git"
-And execute :
+Et exécuter :
+
     bower install
-
-
 
 ## Utilisation
 
