@@ -1,9 +1,9 @@
 "use strict";
 
 (function(angular) {
-    angular.module("GeneanetCustomCamera", []);
+    angular.module("geneanetCustomCamera", []);
 
-    angular.module("GeneanetCustomCamera").provider("$geneanetCustomCamera", [
+    angular.module("geneanetCustomCamera").provider("$geneanetCustomCamera", [
         function() {
             var miniature;
             var saveInGallery;
@@ -11,18 +11,46 @@
             var cameraBackgroundColorPressed;
             var quality;
 
+            /**
+             * Set default miniature option.
+             * 
+             * @param {boolean} newMiniature True : active miniature. False : disabled miniature.
+             */
             this.setOptionMiniature = function(newMiniature) {
                 miniature = newMiniature;
             };
+
+            /**
+             * Set default saveInGallery option.
+             * 
+             * @param {boolean} newSaveInGallery True : active saveInGallery. False : disabled saveInGallery.
+             */
             this.setOptionSaveInGallery = function(newSaveInGallery) {
                 saveInGallery = newSaveInGallery;
             };
+
+            /**
+             * Set default button camera's background color.
+             * 
+             * @param {string} newCameraBackgroundColor
+             */
             this.setOptionCameraBackgroundColor = function(newCameraBackgroundColor) {
                 cameraBackgroundColor = newCameraBackgroundColor;
             };
+
+            /**
+             * Set default button camera's background color when it's pressed.
+             * 
+             * @param {string} newCameraBackgroundColorPressed
+             */
             this.setOptionCameraBackgroundColorPressed = function(newCameraBackgroundColorPressed) {
                 cameraBackgroundColorPressed = newCameraBackgroundColorPressed;
             };
+
+            /**
+             * Set default picture's quality.
+             * @param {integer} newQuality Between 0-100.
+             */
             this.setOptionQuality = function(newQuality) {
                 quality = newQuality;
             };
@@ -97,7 +125,7 @@
 
     GeneanetCustomCamera.prototype.startCamera = function(imgBackgroundBase64, successFct, failFct, overrideOptions) {
         if (navigator.GeneanetCustomCamera === undefined) {
-            throw new GeneanetCustomCameraException("Need GeneanetCustomCamera plugin : TODO");
+            throw new GeneanetCustomCameraException("Need GeneanetCustomCamera plugin : https://github.com/geneanet/customCamera");
         }
         
         var options = {};
