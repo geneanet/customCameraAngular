@@ -8,12 +8,9 @@ Exécuter :
 
     bower install https://github.com/geneanet/customCameraAngular.git
 
-Ou ajouter la ligne suivante dans votre bower.json :
+Ou ajouter la ligne suivante dans votre bower.json puis exécuter `bower install` :
 
     "customCameraAngular": "https://github.com/geneanet/customCameraAngular.git"
-Et exécuter :
-
-    bower install
 
 ## Utilisation
 
