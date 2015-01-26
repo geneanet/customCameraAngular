@@ -31,6 +31,7 @@ angular.module("YourModule").config(["$geneanetCustomCameraProvider",
         $geneanetCustomCameraProvider.setOptionCameraBackgroundColor("#d45f13");
         $geneanetCustomCameraProvider.setOptionCameraBackgroundColorPressed("#145612");
         $geneanetCustomCameraProvider.setOptionQuality(70);
+        $geneanetCustomCameraProvider.setOptionOpacity(false);
     }
 ]);
 ```

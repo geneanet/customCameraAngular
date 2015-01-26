@@ -10,6 +10,7 @@
             var cameraBackgroundColor;
             var cameraBackgroundColorPressed;
             var quality;
+            var opacity;
 
             /**
              * Set default miniature option.
@@ -56,6 +57,14 @@
             };
 
             /**
+             * Set default opacity option.
+             * @param {boolean} newOpacity True : active opacity, false disable
+             */
+            this.setOptionOpacity = function(newOpacity) {
+                opacity = newOpacity;
+            };
+
+            /**
              * Create service.
              */
             this.$get = [function(){
@@ -66,6 +75,7 @@
                 geneanetCustomCamera.setOptionCameraBackgroundColor(cameraBackgroundColor);
                 geneanetCustomCamera.setOptionCameraBackgroundColorPressed(cameraBackgroundColorPressed);
                 geneanetCustomCamera.setOptionQuality(quality);
+                geneanetCustomCamera.setOptionOpacity(opacity);
 
                 return geneanetCustomCamera;
             }];
@@ -81,6 +91,7 @@
         var _cameraBackgroundColor;
         var _cameraBackgroundColorPressed;
         var _quality;
+        var _opacity;
 
         this.setOptionMiniature = function(miniature) {
             _miniature = miniature;
@@ -121,6 +132,14 @@
         this.getOptionQuality = function() {
             return _quality;
         };
+
+        this.setOptionOpacity = function(opacity) {
+            _opacity = opacity;
+        };
+
+        this.getOptionOpacity = function() {
+            return _opacity;
+        };
     }
 
     GeneanetCustomCamera.prototype.startCamera = function(imgBackgroundBase64, successFct, failFct, overrideOptions) {
@@ -136,6 +155,7 @@
         options.cameraBackgroundColor = this.getOptionCameraBackgroundColor();
         options.cameraBackgroundColorPressed = this.getOptionCameraBackgroundColorPressed();
         options.quality = this.getOptionQuality();
+        options.opacity = this.getOptionOpacity();
 
         overrideOptions = overrideOptions ? overrideOptions : {};
         for (var nameOption in overrideOptions) {
