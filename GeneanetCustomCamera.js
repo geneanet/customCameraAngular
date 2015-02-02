@@ -142,7 +142,16 @@
         };
     }
 
-    GeneanetCustomCamera.prototype.startCamera = function(imgBackgroundBase64, successFct, failFct, overrideOptions) {
+    /**
+     * To start custom camera.
+     * 
+     * @param {string}   imgBackgroundBase64                 Image for background.
+     * @param {string}   imgBackgroundBase64OtherOrientation Image for background in other size. If it is null, imgBackgroundBase64 is used.
+     * @param {Function} successFct                          Success callback.
+     * @param {Function} failFct                             Fail callback.
+     * @param {Object}   overrideOptions                     Object to override options.
+     */
+    GeneanetCustomCamera.prototype.startCamera = function(imgBackgroundBase64, imgBackgroundBase64OtherOrientation, successFct, failFct, overrideOptions) {
         if (navigator.GeneanetCustomCamera === undefined) {
             throw new GeneanetCustomCameraException("Need GeneanetCustomCamera plugin : https://github.com/geneanet/customCamera");
         }
@@ -150,6 +159,7 @@
         var options = {};
 
         options.imgBackgroundBase64 = imgBackgroundBase64;
+        options.imgBackgroundBase64OtherOrientation = imgBackgroundBase64OtherOrientation;
         options.miniature = this.getOptionMiniature();
         options.saveInGallery = this.getOptionSaveInGallery();
         options.cameraBackgroundColor = this.getOptionCameraBackgroundColor();
