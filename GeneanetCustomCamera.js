@@ -11,6 +11,8 @@
             var cameraBackgroundColorPressed;
             var quality;
             var opacity;
+            var defaultFlash;
+            var switchFlash;
 
             /**
              * Set default miniature option.
@@ -65,6 +67,35 @@
             };
 
             /**
+             * Set default flash on disabled.
+             */
+            this.optionDefaultFlashIsDisabled = function() {
+                defaultFlash = navigator.GeneanetCustomCamera.FlashModes.DISABLE;
+            };
+
+            /**
+             * Set default flash on active.
+             */
+            this.optionDefaultFlashIsActived = function() {
+                defaultFlash = navigator.GeneanetCustomCamera.FlashModes.ACTIVE;
+            };
+
+            /**
+             * Set default flash on auto.
+             */
+            this.optionDefaultFlashIsAuto = function() {
+                defaultFlash = navigator.GeneanetCustomCamera.FlashModes.AUTO;
+            };
+
+            /**
+             * Set default switchflash option.
+             * @param {boolean} newSwitchFlash True : active button to switch flash, false disable
+             */
+            this.setOptionSwitchFlash = function(newSwitchFlash) {
+                switchFlash = newSwitchFlash;
+            };
+
+            /**
              * Create service.
              */
             this.$get = [function(){
@@ -76,6 +107,8 @@
                 geneanetCustomCamera.setOptionCameraBackgroundColorPressed(cameraBackgroundColorPressed);
                 geneanetCustomCamera.setOptionQuality(quality);
                 geneanetCustomCamera.setOptionOpacity(opacity);
+                geneanetCustomCamera.setOptionDefaultFlash(defaultFlash);
+                geneanetCustomCamera.setOptionSwitchFlash(switchFlash);
 
                 return geneanetCustomCamera;
             }];
@@ -92,6 +125,8 @@
         var _cameraBackgroundColorPressed;
         var _quality;
         var _opacity;
+        var _defaultFlash;
+        var _switchFlash;
 
         this.setOptionMiniature = function(miniature) {
             _miniature = miniature;
@@ -140,6 +175,23 @@
         this.getOptionOpacity = function() {
             return _opacity;
         };
+
+        this.setOptionDefaultFlash = function(defaultFlash) {
+            _defaultFlash = defaultFlash;
+        };
+
+        this.getOptionDefaultFlash = function() {
+            return _defaultFlash;
+        };
+
+        this.setOptionSwitchFlash = function(switchFlash) {
+            _switchFlash = switchFlash;
+        };
+
+        this.getOptionSwitchFlash = function() {
+            return _switchFlash;
+        };
+
     }
 
     /**
@@ -166,6 +218,8 @@
         options.cameraBackgroundColorPressed = this.getOptionCameraBackgroundColorPressed();
         options.quality = this.getOptionQuality();
         options.opacity = this.getOptionOpacity();
+        options.defaultFlash = this.getOptionDefaultFlash();
+        options.switchFlash = this.getOptionSwitchFlash();
 
         overrideOptions = overrideOptions ? overrideOptions : {};
         for (var nameOption in overrideOptions) {
