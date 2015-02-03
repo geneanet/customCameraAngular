@@ -32,6 +32,8 @@ angular.module("YourModule").config(["$geneanetCustomCameraProvider",
         $geneanetCustomCameraProvider.setOptionCameraBackgroundColorPressed("#145612");
         $geneanetCustomCameraProvider.setOptionQuality(70);
         $geneanetCustomCameraProvider.setOptionOpacity(false);
+        $geneanetCustomCameraProvider.optionDefaultFlashIsActived();
+        $geneanetCustomCameraProvider.setOptionSwitchFlash(false);
     }
 ]);
 ```
@@ -51,6 +53,7 @@ angular.module("YourModule").controller("YourController", [
 
         $geneanetCustomCamera.startCamera(
             base64,
+            null, // other base64 to other side. If null, use first parameter.
             function(data) {
                 window.console.log("success");
                 angular.element("#yourNewPicture").attr("src", "data:image/jpeg;base64,"+data);
