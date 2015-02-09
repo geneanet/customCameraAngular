@@ -13,6 +13,8 @@
             var opacity;
             var defaultFlash;
             var switchFlash;
+            var defaultCamera;
+            var switchCamera;
 
             /**
              * Set default miniature option.
@@ -88,11 +90,32 @@
             };
 
             /**
-             * Set default switchflash option.
+             * Set default value for switchflash option.
              * @param {boolean} newSwitchFlash True : active button to switch flash, false disable
              */
             this.setOptionSwitchFlash = function(newSwitchFlash) {
                 switchFlash = newSwitchFlash;
+            };
+
+            /**
+             * Set back camera as default camera.
+             */
+            this.optionDefaultCameraIsBack = function() {
+                defaultCamera = navigator.GeneanetCustomCamera.CameraFacings.BACK;
+            };
+
+            /**
+             * Set front camera as default camera.
+             */
+            this.optionDefaultCameraIsFront = function() {
+                defaultCamera = navigator.GeneanetCustomCamera.CameraFacings.FRONT;
+            };
+
+            /**
+             * Set default value for switchcamera option.
+             */
+            this.setOptionSwitchCamera = function(newSwitchCamera) {
+                switchCamera = newSwitchCamera;
             };
 
             /**
@@ -109,6 +132,8 @@
                 geneanetCustomCamera.setOptionOpacity(opacity);
                 geneanetCustomCamera.setOptionDefaultFlash(defaultFlash);
                 geneanetCustomCamera.setOptionSwitchFlash(switchFlash);
+                geneanetCustomCamera.setOptionDefaultCamera(defaultCamera);
+                geneanetCustomCamera.setOptionSwitchCamera(switchCamera);
 
                 return geneanetCustomCamera;
             }];
@@ -119,14 +144,26 @@
      * GeneanetCustomCamera's constructor.
      */
     function GeneanetCustomCamera() {
+        // boolean.
         var _miniature;
+        // boolean.
         var _saveInGallery;
+        // string.
         var _cameraBackgroundColor;
+        // string.
         var _cameraBackgroundColorPressed;
+        // integer.
         var _quality;
+        // boolean.
         var _opacity;
+        // integer.
         var _defaultFlash;
+        // boolean.
         var _switchFlash;
+        // integer.
+        var _defaultCamera;
+        // boolean.
+        var _switchCamera;
 
         this.setOptionMiniature = function(miniature) {
             _miniature = miniature;
@@ -192,6 +229,21 @@
             return _switchFlash;
         };
 
+        this.setOptionDefaultCamera = function(defaultCamera) {
+            _defaultCamera = defaultCamera;
+        };
+
+        this.getOptionDefaultCamera = function() {
+            return _defaultCamera;
+        };
+
+        this.setOptionSwitchCamera = function(switchCamera) {
+            _switchCamera = switchCamera;
+        };
+
+        this.getOptionSwitchCamera = function() {
+            return _switchCamera;
+        };
     }
 
     /**
@@ -220,6 +272,8 @@
         options.opacity = this.getOptionOpacity();
         options.defaultFlash = this.getOptionDefaultFlash();
         options.switchFlash = this.getOptionSwitchFlash();
+        options.defaultCamera = this.getOptionDefaultCamera();
+        options.switchCamera = this.getOptionSwitchCamera();
 
         overrideOptions = overrideOptions ? overrideOptions : {};
         for (var nameOption in overrideOptions) {
