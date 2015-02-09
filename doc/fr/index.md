@@ -34,6 +34,8 @@ angular.module("YourModule").config(["$geneanetCustomCameraProvider",
         $geneanetCustomCameraProvider.setOptionOpacity(false);
         $geneanetCustomCameraProvider.optionDefaultFlashIsActived();
         $geneanetCustomCameraProvider.setOptionSwitchFlash(false);
+        $geneanetCustomCameraProvider.optionDefaultCameraIsFront();
+        $geneanetCustomCameraProvider.setOptionSwitchCamera(false);
     }
 ]);
 ```
