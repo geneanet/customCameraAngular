@@ -1,4 +1,4 @@
-# $geneanetCustomCamera
+# geneanetCustomCamera
 
 Ce service angular permet de faciliter l'utilisation du plugin cordova [customCamera](https://github.com/geneanet/customCamera).
 
@@ -24,18 +24,18 @@ Dans la déclaration de votre module, ajouter `geneanetCustomCamera` aux dépend
 Plus d'informations sur les options sur [customCamera](https://github.com/geneanet/customCamera).
 
 ``` js
-angular.module("YourModule").config(["$geneanetCustomCameraProvider",
-    function($geneanetCustomCameraProvider) {
-        $geneanetCustomCameraProvider.setOptionMiniature(false);
-        $geneanetCustomCameraProvider.setOptionSaveInGallery(true);
-        $geneanetCustomCameraProvider.setOptionCameraBackgroundColor("#d45f13");
-        $geneanetCustomCameraProvider.setOptionCameraBackgroundColorPressed("#145612");
-        $geneanetCustomCameraProvider.setOptionQuality(70);
-        $geneanetCustomCameraProvider.setOptionOpacity(false);
-        $geneanetCustomCameraProvider.optionDefaultFlashIsActived();
-        $geneanetCustomCameraProvider.setOptionSwitchFlash(false);
-        $geneanetCustomCameraProvider.optionDefaultCameraIsFront();
-        $geneanetCustomCameraProvider.setOptionSwitchCamera(false);
+angular.module("YourModule").config(["geneanetCustomCameraProvider",
+    function(geneanetCustomCameraProvider) {
+        geneanetCustomCameraProvider.setOptionMiniature(false);
+        geneanetCustomCameraProvider.setOptionSaveInGallery(true);
+        geneanetCustomCameraProvider.setOptionCameraBackgroundColor("#d45f13");
+        geneanetCustomCameraProvider.setOptionCameraBackgroundColorPressed("#145612");
+        geneanetCustomCameraProvider.setOptionQuality(70);
+        geneanetCustomCameraProvider.setOptionOpacity(false);
+        geneanetCustomCameraProvider.optionDefaultFlashIsActived();
+        geneanetCustomCameraProvider.setOptionSwitchFlash(false);
+        geneanetCustomCameraProvider.optionDefaultCameraIsFront();
+        geneanetCustomCameraProvider.setOptionSwitchCamera(false);
     }
 ]);
 ```
@@ -44,16 +44,16 @@ angular.module("YourModule").config(["$geneanetCustomCameraProvider",
 
 ``` js
 angular.module("YourModule").controller("YourController", [
-    "$geneanetCustomCamera",
-    function($geneanetCustomCamera) {
+    "geneanetCustomCamera",
+    function(geneanetCustomCamera) {
         [...]
-        var base64 = $geneanetCustomCamera.encodeBase64FromImg(
+        var base64 = geneanetCustomCamera.encodeBase64FromImg(
             angular.element("#yourPicture"), // JQuery object to present your picture for the background.
             "image/jpg", // Type of image.
             true // remove `data:[^\/]*\/[^\,]*,` at the begin
         );
 
-        $geneanetCustomCamera.startCamera(
+        geneanetCustomCamera.startCamera(
             base64,
             null, // other base64 to other side. If null, use first parameter.
             function(data) {
