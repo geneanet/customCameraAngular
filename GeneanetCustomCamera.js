@@ -3,7 +3,7 @@
 (function(angular) {
     angular.module("geneanetCustomCamera", []);
 
-    angular.module("geneanetCustomCamera").provider("$geneanetCustomCamera", [
+    angular.module("geneanetCustomCamera").provider("geneanetCustomCamera", [
         function() {
             var miniature;
             var saveInGallery;
