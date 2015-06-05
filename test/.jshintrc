@@ -1,5 +1,7 @@
 {
+  "jasmine": true,
   "globals": {
-    "module": true
+    "module": false,
+    "inject": false
   }
 }
