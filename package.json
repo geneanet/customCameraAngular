@@ -1,0 +1,32 @@
+{
+  "name": "customCameraAngular",
+  "version": "0.0.3",
+  "description": "AngularJS plugin for customCamera",
+  "main": "src/GeneanetCustomCamera.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geneanet/customCameraAngular.git"
+  },
+  "keywords": [
+    "customCamera",
+    "AngularJS",
+    "Geneanet"
+  ],
+  "author": "Christophe Boucaut",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/geneanet/customCameraAngular/issues"
+  },
+  "homepage": "https://github.com/geneanet/customCameraAngular",
+  "dependencies": {
+    "angular": "^1.3.15",
+    "jasmine": "^2.3.1",
+    "karma": "^0.12.36"
+  }
+}
