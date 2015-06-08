@@ -305,10 +305,19 @@
         var base64 = canvas.toDataURL(format);
 
         if (onlyBase64) {
-            return base64.replace(/data:[^\/]*\/[^\,]*,/, "");
+            return base64.replace(/data:([^\/]*\/[^\,]*)?,/, "");
         } else {
             return base64;
         }
+    };
+
+    /**
+     * Return the GeneanetCustomCamera's Exception.
+     * 
+     * @return {Function}
+     */
+    GeneanetCustomCamera.prototype.getException = function() {
+        return GeneanetCustomCameraException;
     };
 
     /**
@@ -316,6 +325,7 @@
      */
     function GeneanetCustomCameraException(message) {
         this.message = message;
-        this.name = "GeneanetCustomCameraException";
     }
+    GeneanetCustomCameraException.prototype = Object.create(Error.prototype, {name: {value: "GeneanetCustomCameraException"}});
+    GeneanetCustomCameraException.prototype.constructor = GeneanetCustomCameraException;
 })(window.angular);

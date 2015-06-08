@@ -16,7 +16,7 @@ Ou ajouter la ligne suivante dans votre bower.json puis exécuter `bower install
 
 ### Importer le service
 
-Charger le fichier your/path/customCameraAngular/GeneanetCustomCamera.js dans votre projet.
+Charger le fichier your/path/customCameraAngular/src/GeneanetCustomCamera.js dans votre projet.
 Dans la déclaration de votre module, ajouter `geneanetCustomCamera` aux dépendances.
 
 ### Configuration (Optionnelle)
