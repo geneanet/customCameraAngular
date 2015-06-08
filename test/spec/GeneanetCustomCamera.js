@@ -17,6 +17,10 @@ describe('Configuration geneanetCustomCamera', function() {
         };
     });
 
+    afterEach(function() {
+        navigator.GeneanetCustomCamera = undefined;
+    });
+
     it('should have options values as values set by the provider', function() {
         var optionMiniature = false;
         var optionSaveInGallery = true;
@@ -133,7 +137,7 @@ describe('geneanetCustomCamera.encodeBase64FromImg', function() {
     });
 
     it('should return the base64 of image', function() {
-        var img = document.createElement("img");
+        var img = document.createElement('img');
         var base64 = geneanetCustomCamera.encodeBase64FromImg(img);
 
         expect(base64).toEqual(jasmine.any(String));
@@ -141,10 +145,121 @@ describe('geneanetCustomCamera.encodeBase64FromImg', function() {
     });
 
     it('should return the base64 of image without the starting: data:.*,', function() {
-        var img = document.createElement("img");
+        var img = document.createElement('img');
         var base64 = geneanetCustomCamera.encodeBase64FromImg(img, null, true);
 
         expect(base64).toEqual(jasmine.any(String));
         expect(base64.length).toEqual(0);
+    });
+});
+
+describe('geneanetCustomCamera.startCamera', function() {
+    var geneanetCustomCamera;
+
+    beforeEach(function() {   
+        module('geneanetCustomCamera');
+
+        inject(function(_geneanetCustomCamera_) {
+            geneanetCustomCamera = _geneanetCustomCamera_;
+        });
+    });
+
+    it('should throw a GeneanetCustomCameraException exception', function() {
+        expect(geneanetCustomCamera.startCamera).toThrowError(geneanetCustomCamera.getException());
+    });
+
+    it('should have any configurations keys if the service is not configured', function() {
+        navigator.GeneanetCustomCamera = jasmine.createSpyObj('GeneanetCustomCamera', ['startCamera']);
+
+        geneanetCustomCamera.startCamera();
+
+        expect(navigator.GeneanetCustomCamera.startCamera).toHaveBeenCalledWith(jasmine.objectContaining({}), undefined, undefined);
+    });
+
+    it('should have every configurations keys', function() {
+        navigator.GeneanetCustomCamera = jasmine.createSpyObj('GeneanetCustomCamera', ['startCamera']);
+
+        var optionMiniature = jasmine.any(Boolean);
+        var optionSaveInGallery = jasmine.any(Boolean);
+        var optionCameraBackgroundColor = jasmine.any(String);
+        var optionCameraBackgroundColorPressed = jasmine.any(String);
+        var optionQuality = jasmine.any(Number);
+        var optionOpacity = jasmine.any(Boolean);
+        var optionDefaultFlash = jasmine.any(Number);
+        var optionSwitchFlash = jasmine.any(Boolean);
+        var optionDefaultCamera = jasmine.any(Number);
+        var optionSwitchCamera = jasmine.any(Boolean);
+        var base64Background = jasmine.any(String);
+        var base64BackgroundOtherOrientation = jasmine.any(String);
+
+        // configuration service
+        geneanetCustomCamera.setOptionMiniature(optionMiniature);
+        geneanetCustomCamera.setOptionSaveInGallery(optionSaveInGallery);
+        geneanetCustomCamera.setOptionCameraBackgroundColor(optionCameraBackgroundColor);
+        geneanetCustomCamera.setOptionCameraBackgroundColorPressed(optionCameraBackgroundColorPressed);
+        geneanetCustomCamera.setOptionQuality(optionQuality);
+        geneanetCustomCamera.setOptionOpacity(optionOpacity);
+        geneanetCustomCamera.setOptionDefaultFlash(optionDefaultFlash);
+        geneanetCustomCamera.setOptionSwitchFlash(optionSwitchFlash);
+        geneanetCustomCamera.setOptionDefaultCamera(optionDefaultCamera);
+        geneanetCustomCamera.setOptionSwitchCamera(optionSwitchCamera);
+
+        // run the method
+        geneanetCustomCamera.startCamera(base64Background, base64BackgroundOtherOrientation);
+
+        // check all parameters are valid.
+        expect(navigator.GeneanetCustomCamera.startCamera).toHaveBeenCalledWith(
+            jasmine.objectContaining({
+                imgBackgroundBase64: base64Background,
+                imgBackgroundBase64OtherOrientation: base64BackgroundOtherOrientation,
+                miniature: optionMiniature,
+                saveInGallery: optionSaveInGallery,
+                cameraBackgroundColor: optionCameraBackgroundColor,
+                cameraBackgroundColorPressed: optionCameraBackgroundColorPressed,
+                quality: optionQuality,
+                opacity: optionOpacity,
+                defaultFlash: optionDefaultFlash,
+                switchFlash: optionSwitchFlash,
+                defaultCamera: optionDefaultCamera,
+                switchCamera: optionSwitchCamera
+            }),
+            undefined,
+            undefined
+        );
+    });
+
+    it('should have the quality configuration is equal the value used in override object', function() {
+        navigator.GeneanetCustomCamera = jasmine.createSpyObj('GeneanetCustomCamera', ['startCamera']);
+
+        var optionQuality = jasmine.any(Number);
+
+        // run the method
+        geneanetCustomCamera.startCamera(undefined, undefined, undefined, undefined, {quality: optionQuality});
+
+        // check all parameters are valid.
+        expect(navigator.GeneanetCustomCamera.startCamera).toHaveBeenCalledWith(
+            jasmine.objectContaining({
+                quality: optionQuality
+            }),
+            undefined,
+            undefined
+        );
+    });
+
+    it('should have functions for callbacks', function() {
+        navigator.GeneanetCustomCamera = jasmine.createSpyObj('GeneanetCustomCamera', ['startCamera']);
+
+        var successCallback = jasmine.any(Function);
+        var failCallback = jasmine.any(Function);
+
+        // run the method
+        geneanetCustomCamera.startCamera(undefined, undefined, successCallback, failCallback);
+
+        // check all parameters are valid.
+        expect(navigator.GeneanetCustomCamera.startCamera).toHaveBeenCalledWith(
+            jasmine.objectContaining({}),
+            successCallback,
+            failCallback
+        );
     });
 });
