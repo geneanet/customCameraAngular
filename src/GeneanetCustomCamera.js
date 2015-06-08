@@ -305,7 +305,7 @@
         var base64 = canvas.toDataURL(format);
 
         if (onlyBase64) {
-            return base64.replace(/data:[^\/]*\/[^\,]*,/, "");
+            return base64.replace(/data:([^\/]*\/[^\,]*)?,/, "");
         } else {
             return base64;
         }
