@@ -1,4 +1,4 @@
-# $geneanetCustomCamera [![Build Status](https://travis-ci.org/geneanet/customCameraAngular.svg?branch=tests%2Fadd_unit_tests)](https://travis-ci.org/geneanet/customCameraAngular)
+# geneanetCustomCamera [![Build Status](https://travis-ci.org/geneanet/customCameraAngular.svg?branch=tests%2Fadd_unit_tests)](https://travis-ci.org/geneanet/customCameraAngular)
 
 Service documentation (french): [doc/fr/index.md](doc/fr/index.md)
 
