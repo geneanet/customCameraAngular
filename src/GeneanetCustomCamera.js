@@ -312,10 +312,20 @@
     };
 
     /**
+     * Return the GeneanetCustomCamera's Exception.
+     * 
+     * @return {Function}
+     */
+    GeneanetCustomCamera.prototype.getException = function() {
+        return GeneanetCustomCameraException;
+    };
+
+    /**
      * GeneanetCustomCameraException's constructor.
      */
     function GeneanetCustomCameraException(message) {
         this.message = message;
-        this.name = "GeneanetCustomCameraException";
     }
+    GeneanetCustomCameraException.prototype = Object.create(Error.prototype, {name: {value: "GeneanetCustomCameraException"}});
+    GeneanetCustomCameraException.prototype.constructor = GeneanetCustomCameraException;
 })(window.angular);
